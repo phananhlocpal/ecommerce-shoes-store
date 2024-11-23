@@ -22,8 +22,9 @@ namespace backend.Controllers
         private readonly IDistributedCache _distributedCache;
         private readonly IConfiguration _config;
         private readonly IMapper _mapper;
+        private readonly OrderRepo _orderRepoSingle;
 
-        public OrdersController(IRepo<Order> orderRepo, IRepo<OrderItem> orderItemRepo,  CartItemRepo cartItemRepo, ILogger<OrdersController> logger, VNPayService vNPayService, IDistributedCache distributedCache, IConfiguration config, IMapper mapper)
+        public OrdersController(IRepo<Order> orderRepo, IRepo<OrderItem> orderItemRepo,  CartItemRepo cartItemRepo, ILogger<OrdersController> logger, VNPayService vNPayService, IDistributedCache distributedCache, IConfiguration config, IMapper mapper, OrderRepo orderRepoSingle)
         {
             _orderRepo = orderRepo;
             _orderItemRepo = orderItemRepo;
@@ -33,6 +34,7 @@ namespace backend.Controllers
             _distributedCache = distributedCache;
             _config = config;
             _mapper = mapper;
+            _orderRepoSingle = orderRepoSingle;
         }
 
         // GET: api/Orders
@@ -57,6 +59,14 @@ namespace backend.Controllers
 
             var orderDto = _mapper.Map<OrderReadDto>(order);
             return Ok(orderDto);
+        }
+
+        [HttpGet("customer/{customerId}")]
+        public async Task<ActionResult<IEnumerable<OrderReadDto>>> GetOrdersByCustomerId(int customerId)
+        {
+            var orders = await _orderRepoSingle.GetByConditionAsync(o => o.CustomerID == customerId);
+            var ordersDto = _mapper.Map<IEnumerable<OrderReadDto>>(orders);
+            return Ok(ordersDto);
         }
 
         // PUT: api/Orders/5

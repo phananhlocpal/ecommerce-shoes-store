@@ -7988,11 +7988,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Surface\\Documents\\Pal\\myproject\\ecommerce-app-ms-sql-net-react-main\\backend\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\Surface\\Documents\\Pal\\myproject\\ecommerce-shoes-store\\backend\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Users\\Surface\\Documents\\Pal\\myproject\\ecommerce-app-ms-sql-net-react-main\\backend\\backend\\backend.csproj",
+      "projectPath": "C:\\Users\\Surface\\Documents\\Pal\\myproject\\ecommerce-shoes-store\\backend\\backend\\backend.csproj",
       "packagesPath": "C:\\Users\\Surface\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Surface\\Documents\\Pal\\myproject\\ecommerce-app-ms-sql-net-react-main\\backend\\backend\\obj\\",
+      "outputPath": "C:\\Users\\Surface\\Documents\\Pal\\myproject\\ecommerce-shoes-store\\backend\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

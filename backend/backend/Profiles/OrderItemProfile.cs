@@ -10,9 +10,8 @@ namespace backend.Profiles
         {
             // Mapping for OrderItem -> OrderItemReadDto
             CreateMap<OrderItem, OrderItemReadDto>()
-                .ForMember(dest => dest.ProductID, opt => opt.MapFrom(src => src.ProductSize.ProductID))
-                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.ProductSize.Product.Name)) 
-                .ForMember(dest => dest.ProductSizeName, opt => opt.MapFrom(src => src.ProductSize.Size));
+                .ForMember(dest => dest.Product, opt => opt.MapFrom(src => src.ProductSize.Product))
+                .ForMember(dest => dest.ProductSize, opt => opt.MapFrom(src => src.ProductSize));
 
             // Mapping for OrderItemCreateDto -> OrderItem
             CreateMap<OrderItemCreateDto, OrderItem>();

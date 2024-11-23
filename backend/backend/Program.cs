@@ -63,6 +63,7 @@ builder.Services.AddScoped<PasswordHasher<Customer>>();
 builder.Services.AddScoped<PasswordHasher<User>>();
 builder.Services.AddScoped<IRepo<CartItem>, CartItemRepo>();
 builder.Services.AddScoped<CartItemRepo>();
+builder.Services.AddScoped<OrderRepo>();
 
 // Register services
 builder.Services.AddScoped<VNPayService>();

@@ -3,11 +3,9 @@
     public class OrderItemReadDto
     {
         public int OrderItemID { get; set; }
-        public int ProductID { get; set; }
-        public string ProductName { get; set; } 
+        public ProductReadDto Product { get; set; }
         public int Quantity { get; set; }
-        public int ProductSizeID { get; set; }
-        public string ProductSizeName { get; set; } 
+        public ProductSizeReadDto ProductSize { get; set; }
     }
 
     public class OrderItemCreateDto

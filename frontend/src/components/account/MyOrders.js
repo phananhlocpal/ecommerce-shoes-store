@@ -13,38 +13,16 @@ function MyOrders({ currentUser }) {
 
 
   useEffect(() => {
-    dispatch(fetchOrdersByUserId(currentUser.userID)).then(async (response) => {
-      const ordersWithItems = await Promise.all(response.payload.map(async (order, index) => {
-        const orderItems = await orderItemApi.getOrderItemsByOrderId(order.orderID);
-
-        const productSizePromises = orderItems.map((orderItem) =>
-          sizeApi.getProductSize(orderItem.productSizeID)
-        );
-        const productSizes = await Promise.all(productSizePromises);
-
-        const productPromises = productSizes.map((productSize) =>
-          productApi.getProduct(productSize.productID)
-        );
-        const products = await Promise.all(productPromises);
-
-        return {
-          ...order,
-          orderItems: orderItems.map((orderItem, index) => ({
-            ...orderItem,
-            productSize: productSizes[index],
-            product: products[index]
-          })),
-          index
-        };
-      }));
-      setOrders(ordersWithItems);
+    dispatch(fetchOrdersByUserId(currentUser.customerID)).then(async (response) => {
+      console.log('Response from fetchOrdersByUserId:', response.payload);
+      setOrders(response.payload);
     });
-  }, [dispatch, currentUser.userID]);
+  }, [dispatch, currentUser.customerID]);
 
   return (
     <>
       <h1>My Orders</h1>
-      {orders.map((order) => (
+      {Array.isArray(orders) && orders.map((order) => (
         <div className='my-orders-div' key={order.orderID}>
           <div className="line"></div>
           <div className='my-orders-about space-between'>

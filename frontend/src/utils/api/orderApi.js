@@ -9,7 +9,7 @@ const getOrders = async () => {
 }
 
 const getOrdersByUserId = async (userId) => {
-  const response = await axios.get(`${API_URL}/${userId}`);
+  const response = await axios.get(`${API_URL}/customer/${userId}`);
   return response.data;
 }
 
